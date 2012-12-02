@@ -115,3 +115,5 @@ xcuserdata
 # UNKNOWN: recommended by others, but I can't discover what these files are
 #
 # ...none. Everything is now explained.
+/.DS_Store
+/Bucket10.xcodeproj/project.xcworkspace/xcuserdata/kevingibbon.xcuserdatad/UserInterfaceState.xcuserstate

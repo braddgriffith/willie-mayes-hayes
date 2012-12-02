@@ -40,7 +40,36 @@
     // Override point for customization after application launch.
     return YES;
 }
-							
+
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    [[UAPush shared] resetBadge];//zero badge
+    BOOL showAlert = NO;
+    if (application.applicationState == UIApplicationStateActive)
+    {
+        showAlert = YES;
+    }
+    NSString *alertText = [self notificationAlert:userInfo];
+    if (alertText)
+    {
+        
+    }
+}
+
+- (NSString*)notificationAlert:(NSDictionary*)userInfo
+{
+    if ([userInfo objectForKey:@"aps"])
+    {
+        NSDictionary *aps = [userInfo objectForKey:@"aps"];
+        if (aps)
+        {
+            return [aps objectForKey:@"alert"];
+        }
+    }
+    return nil;
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
