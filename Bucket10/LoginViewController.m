@@ -27,12 +27,6 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header.png"] forBarMetrics:UIBarMetricsDefault];
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header-logo.png"]];
-    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header.jpg"]]];
-    self.navigationItem.rightBarButtonItem = item;
-    
-    UIImage *backgroundImage = [UIImage imageNamed: @"background-586h.png"];
-    [self.backgroundImageView setImage:backgroundImage];
-    [self.backgroundImageView sendSubviewToBack:backgroundImageView];
     
     self.webView.delegate = self;
     webView.backgroundColor = [UIColor clearColor];
@@ -47,6 +41,7 @@
                                          UIRemoteNotificationTypeSound |
                                          UIRemoteNotificationTypeAlert)];
 }
+
 
 - (void)viewDidUnload
 {
