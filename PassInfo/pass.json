@@ -1,0 +1,26 @@
+{
+    "formatVersion" : 1,
+    "passTypeIdentifier" : "pass.com.yourdomain.couponfreehug",
+    "serialNumber" : "001",
+    "teamIdentifier" : "ABC1230000",
+    "organizationName" : "Free Hugs LLC",
+    "description" : "Coupon for 1 Free Hug",
+    "logoText" : "Free Hugs LLC",
+    "foregroundColor" : "rgb(255, 255, 255)",
+    "backgroundColor" : "rgb(135, 129, 189)",
+    "labelColor" : "rgb(45, 54, 129)",
+    "barcode" : {
+        "message" : "All you need is love",
+        "format" : "PKBarcodeFormatPDF417",
+        "messageEncoding" : "iso-8859-1"
+    }
+    "coupon" : {
+        "primaryFields" : [
+                           {
+                           "key" : "offer",
+                           "label" : "for you",
+                           "value" : "Free hug"
+                           }
+        ]
+    }
+}
