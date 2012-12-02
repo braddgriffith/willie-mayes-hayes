@@ -82,24 +82,11 @@ bool webFinishedLoading = NO;
     [indicator setColor:[UIColor grayColor]];
     [indicator startAnimating];
     
-    float animationDuration = 1.0f;
-    
     int width = 20;
     int height = 24;
     CGRect frame = CGRectMake(1.5*screenWidth, 0.5*screenHeight, width, height);
     UIImageView *endView = [[UIImageView alloc] initWithFrame:frame];
     endView.image = [UIImage imageNamed:@"rsz_1logo-dark2x.png"];
-    
-//    while (!webFinishedLoading) {
-//        CABasicAnimation *ballMover = [CABasicAnimation animationWithKeyPath:@"position"];
-//        ballMover.removedOnCompletion = NO;
-//        ballMover.fillMode = kCAFillModeForwards;
-//        ballMover.duration = animationDuration;
-//        ballMover.fromValue = [NSValue valueWithCGPoint:CGPointMake(1.5*screenWidth, 0.5*screenHeight)];
-//        ballMover.toValue = [NSValue valueWithCGPoint:CGPointMake(-0.5*screenWidth, 0.5*screenHeight)];
-//        ballMover.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-//        [self.backgroundImageView.layer addAnimation:ballMover forKey:@"ballMover"];
-//    }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -118,9 +105,13 @@ bool webFinishedLoading = NO;
     NSLog(@"defaults updated URL to %@", userEmail);
     
     NSLog(@"webViewDidFinishLoad URL %@", currentURL);
-    if ([currentURL isEqualToString:@"http://mighty-cove-2042.herokuapp.com/"]) {
-        [self performSegueWithIdentifier:@"LoggedInSegue" sender:nil];
-        NSLog(@"transition!");
+    if (currentURL)
+    {
+        NSString *url = [[currentURL componentsSeparatedByString:@"?"] objectAtIndex:0];
+        if ([url isEqualToString:@"http://mighty-cove-2042.herokuapp.com/auth/google_oauth2/callback"]) {
+            [self performSegueWithIdentifier:@"LoggedInSegue" sender:nil];
+            NSLog(@"transition!");
+        }
     }
 }
 

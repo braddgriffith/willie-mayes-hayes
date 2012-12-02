@@ -31,7 +31,7 @@
         NSLog(@"defaultEmail No Existe");
     }
 
-    self.networkEngine = [[MKNetworkEngine alloc] initWithHostName:@""];
+    self.networkEngine = [[MKNetworkEngine alloc] initWithHostName:@"mighty-cove-2042.herokuapp.com"];
 
     // Create Airship singleton that's used to talk to Urban Airship servers.
     // Please populate AirshipConfig.plist with your info from http://go.urbanairship.com
@@ -103,6 +103,14 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
     // Updates the device token and registers the token with UA
     [[UAPush shared] registerDeviceToken:deviceToken];
     NSString *token = [UAirship shared].deviceToken;
+    
+    MKNetworkOperation *op = [ApplicationDelegate.networkEngine operationWithPath:[NSString stringWithFormat:@"pushtoken/%@?email=%@",token,@"kevin@attachments.me"]];
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        NSLog(@"success");
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        
+    }];
+    [ApplicationDelegate.networkEngine enqueueOperation:op];
     NSLog(@"device token:%@", token);
 }
 
