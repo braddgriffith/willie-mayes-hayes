@@ -20,6 +20,7 @@
     
     [[UIBarButtonItem appearance] setTintColor:[UIColor blackColor]];
     
+    self.networkEngine = [[MKNetworkEngine alloc] initWithHostName:@""];
     // Create Airship singleton that's used to talk to Urban Airship servers.
     // Please populate AirshipConfig.plist with your info from http://go.urbanairship.com
     [UAirship takeOff:takeOffOptions];
