@@ -13,5 +13,8 @@
 @property (nonatomic, strong) IBOutlet UIImageView *backgroundImageView;
 @property (nonatomic, strong) IBOutlet UIImageView *logoImageView;
 
++ (UIBarButtonItem *)blackArrowButtonWithTarget:(id)actionTarget andAction:(SEL)buttonAction;
++ (UIBarButtonItem *)greySquareButtonWithTitle:(NSString *)buttonTitle target:(id)actionTarget andAction:(SEL)buttonAction;
+
 @end
 

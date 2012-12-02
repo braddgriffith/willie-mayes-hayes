@@ -22,22 +22,12 @@
 {
     [super viewDidLoad];
     
-    UIImage *backgroundImage = [UIImage imageNamed: @"background-586h.png"];
-    [self.backgroundImageView setImage:backgroundImage];
-    [self.backgroundImageView sendSubviewToBack:backgroundImageView];
-    
     UIImage *logoImage = [UIImage imageNamed: @"logo-white.png"];
     [self.logoImageView setImage:logoImage];
     [self.logoImageView sendSubviewToBack:backgroundImageView];
     
-    self.navigationController.navigationBarHidden = YES;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header.png"] forBarMetrics:UIBarMetricsDefault];
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    if (![self.navigationController isNavigationBarHidden]) {
-        [self.navigationController setNavigationBarHidden:YES animated:YES];
-    }
-}
 
 @end
