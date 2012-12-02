@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "ThanksViewController.h"
 #import "UAPush.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface LoginViewController ()
 
@@ -19,6 +20,8 @@
 @synthesize webView;
 @synthesize indicator;
 @synthesize backgroundImageView;
+
+bool webFinishedLoading = NO;
 
 - (void)viewDidLoad
 {
@@ -75,21 +78,50 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
+    int screenWidth = self.view.frame.size.width;
+    int screenHeight = self.view.frame.size.height;
+    
     NSLog(@"webViewDidStartLoad");
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [indicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [indicator setColor:[UIColor grayColor]];
     [indicator startAnimating];
+    
+    float animationDuration = 1.0f;
+    
+    int width = 20;
+    int height = 24;
+    CGRect frame = CGRectMake(1.5*screenWidth, 0.5*screenHeight, width, height);
+    UIImageView *endView = [[UIImageView alloc] initWithFrame:frame];
+    endView.image = [UIImage imageNamed:@"rsz_1logo-dark2x.png"];
+    
+    while (!webFinishedLoading) {
+        CABasicAnimation *ballMover = [CABasicAnimation animationWithKeyPath:@"position"];
+        ballMover.removedOnCompletion = NO;
+        ballMover.fillMode = kCAFillModeForwards;
+        ballMover.duration = animationDuration;
+        ballMover.fromValue = [NSValue valueWithCGPoint:CGPointMake(1.5*screenWidth, 0.5*screenHeight)];
+        ballMover.toValue = [NSValue valueWithCGPoint:CGPointMake(-0.5*screenWidth, 0.5*screenHeight)];
+        ballMover.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+        [self.backgroundImageView.layer addAnimation:ballMover forKey:@"ballMover"];
+    }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    webFinishedLoading = YES;
     NSLog(@"webViewDidFinishLoad");
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [indicator stopAnimating];
     [indicator removeFromSuperview];
     
     NSString *currentURL = self.webView.request.URL.absoluteString;
+    NSString *userEmail = self.webView.request.URL.absoluteString;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:userEmail forKey:@"email"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    NSLog(@"defaults updated URL to %@", userEmail);
+    
     NSLog(@"webViewDidFinishLoad URL %@", currentURL);
     if ([currentURL isEqualToString:@"http://mighty-cove-2042.herokuapp.com/"]) {
         [self performSegueWithIdentifier:@"LoggedInSegue" sender:nil];
@@ -102,14 +134,5 @@
     NSLog(@"didFailLoadWithError");
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
-
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    // Make sure your segue name in storyboard is the same as this line
-//    if ([[segue identifier] isEqualToString:@"LoggedInSegue"])
-//    {
-//        ThanksViewController *destinationVC = [segue destinationViewController];
-//    }
-//}
 
 @end
