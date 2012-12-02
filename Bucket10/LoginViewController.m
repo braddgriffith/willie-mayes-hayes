@@ -90,16 +90,16 @@ bool webFinishedLoading = NO;
     UIImageView *endView = [[UIImageView alloc] initWithFrame:frame];
     endView.image = [UIImage imageNamed:@"rsz_1logo-dark2x.png"];
     
-    while (!webFinishedLoading) {
-        CABasicAnimation *ballMover = [CABasicAnimation animationWithKeyPath:@"position"];
-        ballMover.removedOnCompletion = NO;
-        ballMover.fillMode = kCAFillModeForwards;
-        ballMover.duration = animationDuration;
-        ballMover.fromValue = [NSValue valueWithCGPoint:CGPointMake(1.5*screenWidth, 0.5*screenHeight)];
-        ballMover.toValue = [NSValue valueWithCGPoint:CGPointMake(-0.5*screenWidth, 0.5*screenHeight)];
-        ballMover.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-        [self.backgroundImageView.layer addAnimation:ballMover forKey:@"ballMover"];
-    }
+//    while (!webFinishedLoading) {
+//        CABasicAnimation *ballMover = [CABasicAnimation animationWithKeyPath:@"position"];
+//        ballMover.removedOnCompletion = NO;
+//        ballMover.fillMode = kCAFillModeForwards;
+//        ballMover.duration = animationDuration;
+//        ballMover.fromValue = [NSValue valueWithCGPoint:CGPointMake(1.5*screenWidth, 0.5*screenHeight)];
+//        ballMover.toValue = [NSValue valueWithCGPoint:CGPointMake(-0.5*screenWidth, 0.5*screenHeight)];
+//        ballMover.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+//        [self.backgroundImageView.layer addAnimation:ballMover forKey:@"ballMover"];
+//    }
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView

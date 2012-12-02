@@ -166,6 +166,9 @@
 		F882518F166B51580004DB24 /* MKNetworkEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = F8825182166B51580004DB24 /* MKNetworkEngine.m */; };
 		F8825190166B51580004DB24 /* MKNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F8825185166B51580004DB24 /* MKNetworkOperation.m */; };
 		F8825191166B51580004DB24 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = F8825188166B51580004DB24 /* Reachability.m */; };
+		F8825198166B56B90004DB24 /* tableCell.png in Resources */ = {isa = PBXBuildFile; fileRef = F8825196166B56B90004DB24 /* tableCell.png */; };
+		F8825199166B56B90004DB24 /* tableCell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F8825197166B56B90004DB24 /* tableCell@2x.png */; };
+		F882519D166B570C0004DB24 /* CustomTableCellCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F882519C166B570C0004DB24 /* CustomTableCellCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -468,6 +471,10 @@
 		F8825185166B51580004DB24 /* MKNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKNetworkOperation.m; sourceTree = "<group>"; };
 		F8825187166B51580004DB24 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		F8825188166B51580004DB24 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		F8825196166B56B90004DB24 /* tableCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tableCell.png; sourceTree = "<group>"; };
+		F8825197166B56B90004DB24 /* tableCell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tableCell@2x.png"; sourceTree = "<group>"; };
+		F882519B166B570C0004DB24 /* CustomTableCellCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableCellCell.h; sourceTree = "<group>"; };
+		F882519C166B570C0004DB24 /* CustomTableCellCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableCellCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -557,6 +564,8 @@
 				E62B7C2B166B18AE00F06819 /* ThanksViewController.m */,
 				F8825170166B491C0004DB24 /* TableListingViewController.h */,
 				F8825171166B491C0004DB24 /* TableListingViewController.m */,
+				F882519B166B570C0004DB24 /* CustomTableCellCell.h */,
+				F882519C166B570C0004DB24 /* CustomTableCellCell.m */,
 				E62B7A53166AA92200F06819 /* Supporting Files */,
 			);
 			path = Bucket10;
@@ -1119,6 +1128,8 @@
 		E62B7C07166AEC9C00F06819 /* hack-day-assets-booya (1) */ = {
 			isa = PBXGroup;
 			children = (
+				F8825196166B56B90004DB24 /* tableCell.png */,
+				F8825197166B56B90004DB24 /* tableCell@2x.png */,
 				F882516C166B45770004DB24 /* btn_back_dark.png */,
 				F882516D166B45770004DB24 /* btn_back_dark@2x.png */,
 				F882516A166B41210004DB24 /* header-button.png */,
@@ -1316,6 +1327,8 @@
 				F882516B166B41210004DB24 /* header-button.png in Resources */,
 				F882516E166B45770004DB24 /* btn_back_dark.png in Resources */,
 				F882516F166B45770004DB24 /* btn_back_dark@2x.png in Resources */,
+				F8825198166B56B90004DB24 /* tableCell.png in Resources */,
+				F8825199166B56B90004DB24 /* tableCell@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1382,6 +1395,7 @@
 				F882518F166B51580004DB24 /* MKNetworkEngine.m in Sources */,
 				F8825190166B51580004DB24 /* MKNetworkOperation.m in Sources */,
 				F8825191166B51580004DB24 /* Reachability.m in Sources */,
+				F882519D166B570C0004DB24 /* CustomTableCellCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
