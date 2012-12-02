@@ -7,6 +7,7 @@
 //
 
 #import "ThanksViewController.h"
+#import "UAPush.h"
 
 @interface ThanksViewController ()
 
@@ -14,25 +15,26 @@
 
 @implementation ThanksViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize startButton;
+@synthesize backgroundImageView;
+@synthesize logoImageView;
 
-- (void)viewDidLoad
+-(void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    UIImage *backgroundImage = [UIImage imageNamed: @"background-586h.png"];
+    [self.backgroundImageView setImage:backgroundImage];
+    [self.backgroundImageView sendSubviewToBack:backgroundImageView];
+    
+    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header-logo.png"]];
+    
+    UIImage *logoImage = [UIImage imageNamed: @"logo-white.png"];
+    [self.logoImageView setImage:logoImage];
+    [self.logoImageView sendSubviewToBack:backgroundImageView];
+    
+    self.navigationController.navigationBarHidden = NO;
+    
 }
 
 @end

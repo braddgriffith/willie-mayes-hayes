@@ -29,11 +29,15 @@
     UIImage *logoImage = [UIImage imageNamed: @"logo-white.png"];
     [self.logoImageView setImage:logoImage];
     [self.logoImageView sendSubviewToBack:backgroundImageView];
+    
+    self.navigationController.navigationBarHidden = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.navigationController.navigationBarHidden = YES;
+    if (![self.navigationController isNavigationBarHidden]) {
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+    }
 }
 
 @end

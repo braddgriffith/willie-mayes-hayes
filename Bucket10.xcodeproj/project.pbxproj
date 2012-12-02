@@ -151,7 +151,7 @@
 		E62B7C22166AEDE200F06819 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E62B7C21166AEDE100F06819 /* LoginViewController.m */; };
 		E62B7C24166AF7E600F06819 /* header-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C23166AF7E600F06819 /* header-button@2x.png */; };
 		E62B7C26166AF7F800F06819 /* header.png in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C25166AF7F800F06819 /* header.png */; };
-		E62B7C29166B063300F06819 /* ThanksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E62B7C28166B063300F06819 /* ThanksViewController.m */; };
+		E62B7C2C166B18AE00F06819 /* ThanksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E62B7C2B166B18AE00F06819 /* ThanksViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -427,8 +427,8 @@
 		E62B7C21166AEDE100F06819 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E62B7C23166AF7E600F06819 /* header-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header-button@2x.png"; sourceTree = "<group>"; };
 		E62B7C25166AF7F800F06819 /* header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header.png; sourceTree = "<group>"; };
-		E62B7C27166B063300F06819 /* ThanksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThanksViewController.h; sourceTree = "<group>"; };
-		E62B7C28166B063300F06819 /* ThanksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThanksViewController.m; sourceTree = "<group>"; };
+		E62B7C2A166B18AE00F06819 /* ThanksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThanksViewController.h; sourceTree = "<group>"; };
+		E62B7C2B166B18AE00F06819 /* ThanksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThanksViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -462,8 +462,8 @@
 		E62B7A3D166AA92200F06819 = {
 			isa = PBXGroup;
 			children = (
-				E62B7A90166ABF0100F06819 /* Airship */,
 				E62B7A52166AA92200F06819 /* Bucket10 */,
+				E62B7A90166ABF0100F06819 /* Airship */,
 				E62B7A4B166AA92200F06819 /* Frameworks */,
 				E62B7A49166AA92200F06819 /* Products */,
 			);
@@ -510,8 +510,8 @@
 				E62B7A6B166AA92200F06819 /* WelcomeViewController.m */,
 				E62B7C20166AEDE100F06819 /* LoginViewController.h */,
 				E62B7C21166AEDE100F06819 /* LoginViewController.m */,
-				E62B7C27166B063300F06819 /* ThanksViewController.h */,
-				E62B7C28166B063300F06819 /* ThanksViewController.m */,
+				E62B7C2A166B18AE00F06819 /* ThanksViewController.h */,
+				E62B7C2B166B18AE00F06819 /* ThanksViewController.m */,
 				E62B7A53166AA92200F06819 /* Supporting Files */,
 			);
 			path = Bucket10;
@@ -1279,7 +1279,7 @@
 				E62B7BF1166ABF0200F06819 /* UASubscriptionUI.m in Sources */,
 				E62B7BF2166ABF0200F06819 /* UASubscriptionUIUtil.m in Sources */,
 				E62B7C22166AEDE200F06819 /* LoginViewController.m in Sources */,
-				E62B7C29166B063300F06819 /* ThanksViewController.m in Sources */,
+				E62B7C2C166B18AE00F06819 /* ThanksViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

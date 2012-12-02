@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "ThanksViewController.h"
 #import "UAPush.h"
 
 @interface LoginViewController ()
@@ -17,6 +18,7 @@
 
 @synthesize webView;
 @synthesize indicator;
+@synthesize backgroundImageView;
 
 - (void)viewDidLoad
 {
@@ -28,9 +30,14 @@
     UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header.jpg"]]];
     self.navigationItem.rightBarButtonItem = item;
     
-    self.webView.delegate = self;
+    UIImage *backgroundImage = [UIImage imageNamed: @"background-586h.png"];
+    [self.backgroundImageView setImage:backgroundImage];
+    [self.backgroundImageView sendSubviewToBack:backgroundImageView];
     
-    NSURL *url = [NSURL URLWithString:@"mighty-cove-2042.herokuapp.com/auth/google_oauth2"];
+    self.webView.delegate = self;
+    webView.backgroundColor = [UIColor clearColor];
+    
+    NSURL *url = [NSURL URLWithString:@"http://mighty-cove-2042.herokuapp.com/auth/google_oauth2"];
     NSURLRequest *requestURL = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:requestURL];
     
@@ -50,7 +57,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.navigationController.navigationBarHidden = NO;
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,23 +75,41 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
+    NSLog(@"webViewDidStartLoad");
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [indicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [indicator setColor:[UIColor grayColor]];
-    //indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [indicator startAnimating];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    NSLog(@"webViewDidFinishLoad");
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [indicator stopAnimating];
     [indicator removeFromSuperview];
+    
+    NSString *currentURL = self.webView.request.URL.absoluteString;
+    NSLog(@"webViewDidFinishLoad URL %@", currentURL);
+    if ([currentURL isEqualToString:@"http://mighty-cove-2042.herokuapp.com/"]) {
+        [self performSegueWithIdentifier:@"LoggedInSegue" sender:nil];
+        NSLog(@"transition!");
+    }
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+    NSLog(@"didFailLoadWithError");
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
+
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    // Make sure your segue name in storyboard is the same as this line
+//    if ([[segue identifier] isEqualToString:@"LoggedInSegue"])
+//    {
+//        ThanksViewController *destinationVC = [segue destinationViewController];
+//    }
+//}
 
 @end
