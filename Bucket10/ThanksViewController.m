@@ -15,7 +15,6 @@
 
 @implementation ThanksViewController
 
-@synthesize startButton;
 @synthesize backgroundImageView;
 @synthesize logoImageView;
 
