@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomTableCellCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end

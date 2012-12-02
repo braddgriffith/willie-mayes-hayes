@@ -23,7 +23,7 @@
     [super viewDidLoad];
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header-logo.png"]];
-    
+    [self.navigationItem setHidesBackButton:YES animated:NO];
     UIImage *logoImage = [UIImage imageNamed: @"logo-white.png"];
     [self.logoImageView setImage:logoImage];
     [self.logoImageView sendSubviewToBack:backgroundImageView];
@@ -32,6 +32,33 @@
     
     [self.navigationItem setLeftBarButtonItem:[ThanksViewController blackArrowButtonWithTarget:self andAction:@selector(backButtonPressed)]];
 }
+
+//-(void)viewWillAppear:(BOOL)animated //ADDED
+//
+//{
+//    int screenWidth = self.view.frame.size.width;
+//    int screenHeight = self.view.frame.size.height;
+//    int width = 20;
+//    int height = 24;
+//    
+//    
+//    CGRect startFrame = CGRectMake(1.1*screenWidth, 0.5*screenHeight+0.5*height, width, height);
+//    UIImageView *beeView = [[UIImageView alloc] initWithFrame:startFrame];
+//    [self.backgroundImageView addSubview:beeView];
+//    beeView.image = [UIImage imageNamed:@"rsz_1logo-dark2x.png"];
+//    
+//    CGRect endFrame = CGRectMake(0.5*screenWidth, 0.5*screenHeight+0.5*height, width, height);
+//    [UIView animateWithDuration:2.5     
+//                          delay:0.0
+//                        options:UIViewAnimationOptionBeginFromCurrentState
+//                     animations:^{
+//                         [beeView setFrame:endFrame];
+//                     }
+//                     completion:^(BOOL finished){
+//                         beeView.frame = CGRectMake(0.5*screenWidth, 0.5*screenHeight+0.5*height, 1, 1);
+//                     }];
+//    
+//}
 
 -(void)backButtonPressed
 {

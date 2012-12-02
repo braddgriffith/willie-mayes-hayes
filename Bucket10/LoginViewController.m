@@ -21,7 +21,9 @@
 @synthesize indicator;
 @synthesize backgroundImageView;
 
+UIImageView *beeView;
 bool webFinishedLoading = NO;
+int numAnimiations = 0;
 
 - (void)viewDidLoad
 {
@@ -71,22 +73,46 @@ bool webFinishedLoading = NO;
     return YES;
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView
+- (void)webViewDidStartLoad:(UIWebView *)webView //UPDATED
+
 {
-    int screenWidth = self.view.frame.size.width;
-    int screenHeight = self.view.frame.size.height;
-    
     NSLog(@"webViewDidStartLoad");
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
     [indicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [indicator setColor:[UIColor grayColor]];
     [indicator startAnimating];
     
+    int screenWidth = self.view.frame.size.width;
+    int screenHeight = self.view.frame.size.height;
     int width = 20;
     int height = 24;
-    CGRect frame = CGRectMake(1.5*screenWidth, 0.5*screenHeight, width, height);
-    UIImageView *endView = [[UIImageView alloc] initWithFrame:frame];
-    endView.image = [UIImage imageNamed:@"rsz_1logo-dark2x.png"];
+    
+    NSLog(@"webFinishedLoading %d", webFinishedLoading);
+    
+    while (!webFinishedLoading && numAnimiations < 4) {
+        
+        //        CGRect frame = CGRectMake(0.0, 0.5*screenHeight, width, height);
+        
+        CGRect startFrame = CGRectMake(1.1*screenWidth+numAnimiations*screenWidth, 0.12*numAnimiations*screenHeight+0.5*height, width, height);
+        beeView = [[UIImageView alloc] initWithFrame:startFrame];
+        [self.webView addSubview:beeView];
+        beeView.image = [UIImage imageNamed:@"rsz_1logo-dark2x.png"];
+        NSLog(@"numAnimations %d", numAnimiations);
+        
+        CGRect endFrame = CGRectMake(-0.1*screenWidth, 0.13*numAnimiations*screenHeight+0.5*height, width, height);
+        [UIView animateWithDuration:numAnimiations
+                              delay:0.0
+                            options:UIViewAnimationOptionBeginFromCurrentState
+                         animations:^{
+                             [beeView setFrame:endFrame];
+                         }
+                         completion:^(BOOL finished){
+                         }];
+        numAnimiations++;
+    }
+    
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -100,17 +126,19 @@ bool webFinishedLoading = NO;
     NSString *currentURL = self.webView.request.URL.absoluteString;
     NSString *userEmail = self.webView.request.URL.absoluteString;
     
-    [[NSUserDefaults standardUserDefaults] setObject:userEmail forKey:@"email"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     NSLog(@"defaults updated URL to %@", userEmail);
     
     NSLog(@"webViewDidFinishLoad URL %@", currentURL);
-    if (currentURL)
+    if (currentURL && [[currentURL componentsSeparatedByString:@"/"] count] == 4)
     {
-        NSString *url = [[currentURL componentsSeparatedByString:@"?"] objectAtIndex:0];
-        if ([url isEqualToString:@"http://mighty-cove-2042.herokuapp.com/auth/google_oauth2/callback"]) {
+        NSString *middlePart = [[currentURL componentsSeparatedByString:@"/"] objectAtIndex:2];
+        NSString *email = [[currentURL componentsSeparatedByString:@"/"] lastObject];
+        if ([middlePart isEqualToString:@"mighty-cove-2042.herokuapp.com"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:email forKey:@"email"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [ApplicationDelegate pushTokenToServer];
             [self performSegueWithIdentifier:@"LoggedInSegue" sender:nil];
-            NSLog(@"transition!");
         }
     }
 }

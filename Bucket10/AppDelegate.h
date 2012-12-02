@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MKNetworkEngine.h"
+#import "PassKitHelper.h"
 
 #define ApplicationDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
 
@@ -16,5 +17,8 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, strong) NSString *userEmail;
 @property (strong, nonatomic) MKNetworkEngine *networkEngine;
+@property (strong, nonatomic) PassKitHelper *passKitHelper;
+
+-(void)pushTokenToServer;
 
 @end

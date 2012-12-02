@@ -1,3 +1,4 @@
+
 //
 //  AppDelegate.m
 //  Bucket10
@@ -9,10 +10,10 @@
 #import "AppDelegate.h"
 #import "UAirship.h"
 #import "UAPush.h"
+#import "TableListingViewController.h"
+
 
 @implementation AppDelegate
-
-@synthesize userEmail;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -25,13 +26,17 @@
     NSString *defaultEmail = [currentDefaults objectForKey:@"email"];
  
     if (defaultEmail) {
-        self.userEmail = defaultEmail;
         NSLog(@"defaultEmail exists and it's %@", defaultEmail);
+        UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+        TableListingViewController *vc =[storybord instantiateViewControllerWithIdentifier:@"TableListingViewController"];
+        UINavigationController *rootController = [[UINavigationController alloc] initWithRootViewController:vc];
+        [[self window] setRootViewController:rootController];
     } else {
         NSLog(@"defaultEmail No Existe");
     }
 
     self.networkEngine = [[MKNetworkEngine alloc] initWithHostName:@"mighty-cove-2042.herokuapp.com"];
+    self.passKitHelper = [[PassKitHelper alloc] init];
 
     // Create Airship singleton that's used to talk to Urban Airship servers.
     // Please populate AirshipConfig.plist with your info from http://go.urbanairship.com
@@ -45,26 +50,20 @@
 didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     [[UAPush shared] resetBadge];//zero badge
-    BOOL showAlert = NO;
-    if (application.applicationState == UIApplicationStateActive)
-    {
-        showAlert = YES;
-    }
-    NSString *alertText = [self notificationAlert:userInfo];
-    if (alertText)
-    {
-        
-    }
+    [self notificationAlert:userInfo];
 }
 
 - (NSString*)notificationAlert:(NSDictionary*)userInfo
 {
-    if ([userInfo objectForKey:@"aps"])
+    if ([userInfo objectForKey:@"meta"])
     {
-        NSDictionary *aps = [userInfo objectForKey:@"aps"];
-        if (aps)
+        NSDictionary *meta = [userInfo objectForKey:@"meta"];
+        if (meta)
         {
-            return [aps objectForKey:@"alert"];
+            self.passKitHelper.viewController = self.window.rootViewController;
+            NSString *title = [meta objectForKey:@"title"];
+            NSString *url = [meta objectForKey:@"url"];
+            [self.passKitHelper openPassFile:url];
         }
     }
     return nil;
@@ -74,8 +73,6 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    
-    [[NSUserDefaults standardUserDefaults] setObject:self.userEmail forKey:@"email"];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -103,15 +100,24 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
     // Updates the device token and registers the token with UA
     [[UAPush shared] registerDeviceToken:deviceToken];
     NSString *token = [UAirship shared].deviceToken;
+    [self pushTokenToServer];
     
-    MKNetworkOperation *op = [ApplicationDelegate.networkEngine operationWithPath:[NSString stringWithFormat:@"pushtoken/%@?email=%@",token,@"kevin@attachments.me"]];
+    NSLog(@"device token:%@", token);
+}
+
+-(void)pushTokenToServer
+{
+    NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *defaultEmail = [currentDefaults objectForKey:@"email"];
+    if (!defaultEmail || ![UAirship shared].deviceToken) return;
+    MKNetworkOperation *op = [ApplicationDelegate.networkEngine operationWithPath:[NSString stringWithFormat:@"pushtoken/%@?email=%@",[UAirship shared].deviceToken,defaultEmail]];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         NSLog(@"success");
     } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
-        
+        NSLog(@"we had an error");
     }];
     [ApplicationDelegate.networkEngine enqueueOperation:op];
-    NSLog(@"device token:%@", token);
+    
 }
 
 @end
