@@ -21,7 +21,6 @@
     [takeOffOptions setValue:launchOptions forKey:UAirshipTakeOffOptionsLaunchOptionsKey];
     
     [[UIBarButtonItem appearance] setTintColor:[UIColor blackColor]];
-    
     NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
     NSString *defaultEmail = [currentDefaults objectForKey:@"email"];
  
@@ -31,6 +30,9 @@
     } else {
         NSLog(@"defaultEmail No Existe");
     }
+
+    self.networkEngine = [[MKNetworkEngine alloc] initWithHostName:@""];
+
     // Create Airship singleton that's used to talk to Urban Airship servers.
     // Please populate AirshipConfig.plist with your info from http://go.urbanairship.com
     [UAirship takeOff:takeOffOptions];
