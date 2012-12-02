@@ -11,7 +11,7 @@
 @interface WelcomeViewController : UIViewController
 
 @property (nonatomic, strong) IBOutlet UIButton *startButton;
-
-
+@property (nonatomic, strong) IBOutlet UIImageView *backgroundImageView;
+@property (nonatomic, strong) IBOutlet UIImageView *logoImageView;
 
 @end

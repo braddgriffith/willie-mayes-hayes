@@ -18,15 +18,11 @@
     NSMutableDictionary *takeOffOptions = [[NSMutableDictionary alloc] init];
     [takeOffOptions setValue:launchOptions forKey:UAirshipTakeOffOptionsLaunchOptionsKey];
     
+    [[UIBarButtonItem appearance] setTintColor:[UIColor blackColor]];
+    
     // Create Airship singleton that's used to talk to Urban Airship servers.
     // Please populate AirshipConfig.plist with your info from http://go.urbanairship.com
     [UAirship takeOff:takeOffOptions];
-    
-    // Register for notifications
-    [[UAPush shared]
-     registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
-                                         UIRemoteNotificationTypeSound |
-                                         UIRemoteNotificationTypeAlert)];
     
     // Override point for customization after application launch.
     return YES;
@@ -58,7 +54,8 @@
     [UAirship land];
 }
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
     // Updates the device token and registers the token with UA
     [[UAPush shared] registerDeviceToken:deviceToken];
     NSString *token = [UAirship shared].deviceToken;

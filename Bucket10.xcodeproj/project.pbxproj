@@ -137,6 +137,21 @@
 		E62B7C01166ABF0200F06819 /* UASubscriptionSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E62B7B98166ABF0200F06819 /* UASubscriptionSettingsViewController.xib */; };
 		E62B7C02166ABF0200F06819 /* UASubscriptionUserProductsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E62B7B99166ABF0200F06819 /* UASubscriptionUserProductsViewController.xib */; };
 		E62B7C04166AC08C00F06819 /* AirshipConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C03166AC08C00F06819 /* AirshipConfig.plist */; };
+		E62B7C15166AEC9C00F06819 /* background-586h.png in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C09166AEC9C00F06819 /* background-586h.png */; };
+		E62B7C16166AEC9C00F06819 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C0A166AEC9C00F06819 /* background.png */; };
+		E62B7C17166AEC9C00F06819 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C0B166AEC9C00F06819 /* background@2x.png */; };
+		E62B7C18166AEC9C00F06819 /* header-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C0C166AEC9C00F06819 /* header-logo.png */; };
+		E62B7C19166AEC9C00F06819 /* header-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C0D166AEC9C00F06819 /* header-logo@2x.png */; };
+		E62B7C1A166AEC9C00F06819 /* logo-dark.png in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C0E166AEC9C00F06819 /* logo-dark.png */; };
+		E62B7C1B166AEC9C00F06819 /* logo-dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C0F166AEC9C00F06819 /* logo-dark@2x.png */; };
+		E62B7C1C166AEC9C00F06819 /* logo-white.png in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C10166AEC9C00F06819 /* logo-white.png */; };
+		E62B7C1D166AEC9C00F06819 /* logo-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C11166AEC9C00F06819 /* logo-white@2x.png */; };
+		E62B7C1E166AEC9C00F06819 /* signin-button.png in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C12166AEC9C00F06819 /* signin-button.png */; };
+		E62B7C1F166AEC9C00F06819 /* signin-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C13166AEC9C00F06819 /* signin-button@2x.png */; };
+		E62B7C22166AEDE200F06819 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E62B7C21166AEDE100F06819 /* LoginViewController.m */; };
+		E62B7C24166AF7E600F06819 /* header-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C23166AF7E600F06819 /* header-button@2x.png */; };
+		E62B7C26166AF7F800F06819 /* header.png in Resources */ = {isa = PBXBuildFile; fileRef = E62B7C25166AF7F800F06819 /* header.png */; };
+		E62B7C29166B063300F06819 /* ThanksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E62B7C28166B063300F06819 /* ThanksViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -397,6 +412,23 @@
 		E62B7B98166ABF0200F06819 /* UASubscriptionSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UASubscriptionSettingsViewController.xib; sourceTree = "<group>"; };
 		E62B7B99166ABF0200F06819 /* UASubscriptionUserProductsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UASubscriptionUserProductsViewController.xib; sourceTree = "<group>"; };
 		E62B7C03166AC08C00F06819 /* AirshipConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AirshipConfig.plist; sourceTree = "<group>"; };
+		E62B7C09166AEC9C00F06819 /* background-586h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background-586h.png"; sourceTree = "<group>"; };
+		E62B7C0A166AEC9C00F06819 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		E62B7C0B166AEC9C00F06819 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		E62B7C0C166AEC9C00F06819 /* header-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header-logo.png"; sourceTree = "<group>"; };
+		E62B7C0D166AEC9C00F06819 /* header-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header-logo@2x.png"; sourceTree = "<group>"; };
+		E62B7C0E166AEC9C00F06819 /* logo-dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-dark.png"; sourceTree = "<group>"; };
+		E62B7C0F166AEC9C00F06819 /* logo-dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-dark@2x.png"; sourceTree = "<group>"; };
+		E62B7C10166AEC9C00F06819 /* logo-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-white.png"; sourceTree = "<group>"; };
+		E62B7C11166AEC9C00F06819 /* logo-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-white@2x.png"; sourceTree = "<group>"; };
+		E62B7C12166AEC9C00F06819 /* signin-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signin-button.png"; sourceTree = "<group>"; };
+		E62B7C13166AEC9C00F06819 /* signin-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signin-button@2x.png"; sourceTree = "<group>"; };
+		E62B7C20166AEDE100F06819 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		E62B7C21166AEDE100F06819 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		E62B7C23166AF7E600F06819 /* header-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header-button@2x.png"; sourceTree = "<group>"; };
+		E62B7C25166AF7F800F06819 /* header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header.png; sourceTree = "<group>"; };
+		E62B7C27166B063300F06819 /* ThanksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThanksViewController.h; sourceTree = "<group>"; };
+		E62B7C28166B063300F06819 /* ThanksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThanksViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -476,6 +508,10 @@
 				E62B7A67166AA92200F06819 /* MainStoryboard_iPad.storyboard */,
 				E62B7A6A166AA92200F06819 /* WelcomeViewController.h */,
 				E62B7A6B166AA92200F06819 /* WelcomeViewController.m */,
+				E62B7C20166AEDE100F06819 /* LoginViewController.h */,
+				E62B7C21166AEDE100F06819 /* LoginViewController.m */,
+				E62B7C27166B063300F06819 /* ThanksViewController.h */,
+				E62B7C28166B063300F06819 /* ThanksViewController.m */,
 				E62B7A53166AA92200F06819 /* Supporting Files */,
 			);
 			path = Bucket10;
@@ -484,6 +520,7 @@
 		E62B7A53166AA92200F06819 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E62B7C07166AEC9C00F06819 /* hack-day-assets-booya (1) */,
 				E62B7A54166AA92200F06819 /* Bucket10-Info.plist */,
 				E62B7C03166AC08C00F06819 /* AirshipConfig.plist */,
 				E62B7A55166AA92200F06819 /* InfoPlist.strings */,
@@ -1034,6 +1071,26 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		E62B7C07166AEC9C00F06819 /* hack-day-assets-booya (1) */ = {
+			isa = PBXGroup;
+			children = (
+				E62B7C23166AF7E600F06819 /* header-button@2x.png */,
+				E62B7C25166AF7F800F06819 /* header.png */,
+				E62B7C09166AEC9C00F06819 /* background-586h.png */,
+				E62B7C0A166AEC9C00F06819 /* background.png */,
+				E62B7C0B166AEC9C00F06819 /* background@2x.png */,
+				E62B7C0C166AEC9C00F06819 /* header-logo.png */,
+				E62B7C0D166AEC9C00F06819 /* header-logo@2x.png */,
+				E62B7C0E166AEC9C00F06819 /* logo-dark.png */,
+				E62B7C0F166AEC9C00F06819 /* logo-dark@2x.png */,
+				E62B7C10166AEC9C00F06819 /* logo-white.png */,
+				E62B7C11166AEC9C00F06819 /* logo-white@2x.png */,
+				E62B7C12166AEC9C00F06819 /* signin-button.png */,
+				E62B7C13166AEC9C00F06819 /* signin-button@2x.png */,
+			);
+			path = "hack-day-assets-booya (1)";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1154,6 +1211,19 @@
 				E62B7C01166ABF0200F06819 /* UASubscriptionSettingsViewController.xib in Resources */,
 				E62B7C02166ABF0200F06819 /* UASubscriptionUserProductsViewController.xib in Resources */,
 				E62B7C04166AC08C00F06819 /* AirshipConfig.plist in Resources */,
+				E62B7C15166AEC9C00F06819 /* background-586h.png in Resources */,
+				E62B7C16166AEC9C00F06819 /* background.png in Resources */,
+				E62B7C17166AEC9C00F06819 /* background@2x.png in Resources */,
+				E62B7C18166AEC9C00F06819 /* header-logo.png in Resources */,
+				E62B7C19166AEC9C00F06819 /* header-logo@2x.png in Resources */,
+				E62B7C1A166AEC9C00F06819 /* logo-dark.png in Resources */,
+				E62B7C1B166AEC9C00F06819 /* logo-dark@2x.png in Resources */,
+				E62B7C1C166AEC9C00F06819 /* logo-white.png in Resources */,
+				E62B7C1D166AEC9C00F06819 /* logo-white@2x.png in Resources */,
+				E62B7C1E166AEC9C00F06819 /* signin-button.png in Resources */,
+				E62B7C1F166AEC9C00F06819 /* signin-button@2x.png in Resources */,
+				E62B7C24166AF7E600F06819 /* header-button@2x.png in Resources */,
+				E62B7C26166AF7F800F06819 /* header.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1208,6 +1278,8 @@
 				E62B7BF0166ABF0200F06819 /* UASubscriptionTableViewDelegate.m in Sources */,
 				E62B7BF1166ABF0200F06819 /* UASubscriptionUI.m in Sources */,
 				E62B7BF2166ABF0200F06819 /* UASubscriptionUIUtil.m in Sources */,
+				E62B7C22166AEDE200F06819 /* LoginViewController.m in Sources */,
+				E62B7C29166B063300F06819 /* ThanksViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
