@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "UAirship.h"
 #import "UAPush.h"
+#import "WelcomeViewController.h"
 #import "TableListingViewController.h"
 
 
@@ -41,6 +42,8 @@
     // Create Airship singleton that's used to talk to Urban Airship servers.
     // Please populate AirshipConfig.plist with your info from http://go.urbanairship.com
     [UAirship takeOff:takeOffOptions];
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
     // Override point for customization after application launch.
     return YES;
@@ -84,10 +87,20 @@ didReceiveRemoteNotification:(NSDictionary *)userInfo
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    UINavigationController *viewController = self.window.rootViewController;
+    if ([viewController isMemberOfClass:[UINavigationController class]])
+    {
+        WelcomeViewController *welcomeVc = viewController.topViewController;
+        if ([welcomeVc isMemberOfClass:[WelcomeViewController class]])
+        {
+            [welcomeVc drawBeeAnimation];
+        }
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    NSLog(@"sdfsadf");
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

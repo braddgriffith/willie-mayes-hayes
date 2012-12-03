@@ -76,41 +76,91 @@ int numAnimiations = 0;
 - (void)webViewDidStartLoad:(UIWebView *)webView //UPDATED
 
 {
+    
     NSLog(@"webViewDidStartLoad");
     
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     
     [indicator setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
     [indicator setColor:[UIColor grayColor]];
+    
     [indicator startAnimating];
     
+    
+    
     int screenWidth = self.view.frame.size.width;
+    
     int screenHeight = self.view.frame.size.height;
+    
     int width = 20;
+    
     int height = 24;
+    
+    
     
     NSLog(@"webFinishedLoading %d", webFinishedLoading);
     
     while (!webFinishedLoading && numAnimiations < 4) {
         
-        //        CGRect frame = CGRectMake(0.0, 0.5*screenHeight, width, height);
+        CGRect startFrame = CGRectMake(1.1*screenWidth+numAnimiations*screenWidth, 0.091*numAnimiations*screenHeight+0.5*height, width, height);
         
-        CGRect startFrame = CGRectMake(1.1*screenWidth+numAnimiations*screenWidth, 0.12*numAnimiations*screenHeight+0.5*height, width, height);
         beeView = [[UIImageView alloc] initWithFrame:startFrame];
+        
         [self.webView addSubview:beeView];
+        
         beeView.image = [UIImage imageNamed:@"rsz_1logo-dark2x.png"];
+        
         NSLog(@"numAnimations %d", numAnimiations);
         
-        CGRect endFrame = CGRectMake(-0.1*screenWidth, 0.13*numAnimiations*screenHeight+0.5*height, width, height);
+        beeView.clipsToBounds = YES;
+        
+        
+        
+        int endX = -0.1*screenWidth;
+        
+        if (numAnimiations == 3) {
+            
+            endX = 0.1*screenWidth;
+            
+        }
+        
+        CGRect endFrame = CGRectMake(endX, 0.091*numAnimiations*screenHeight+0.5*height, width, height);
+        
         [UIView animateWithDuration:numAnimiations
+         
                               delay:0.0
+         
                             options:UIViewAnimationOptionBeginFromCurrentState
+         
                          animations:^{
+                             
                              [beeView setFrame:endFrame];
+                             
                          }
+         
                          completion:^(BOOL finished){
+                             
+                             [UIView animateWithDuration:1.5
+                              
+                                                   delay:2.1
+                              
+                                                 options:UIViewAnimationOptionBeginFromCurrentState
+                              
+                                              animations:^{
+                                                  
+                                                  [beeView setAlpha:0.0];
+                                                  
+                                              }
+                              
+                                              completion:^(BOOL finished){
+                                                  
+                                              }];
+                             
                          }];
+        
         numAnimiations++;
+        
     }
     
 }

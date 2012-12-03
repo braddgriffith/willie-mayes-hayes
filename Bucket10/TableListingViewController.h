@@ -10,6 +10,7 @@
 
 
 @interface TableListingViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITableView *listsTableView;
 
 
 

@@ -37,15 +37,41 @@
     passKitHelper.viewController = self;
     [self.navigationItem setHidesBackButton:YES animated:NO];
     passes = [NSMutableArray array];
-    [passes addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"I AM A TITLE", @"title", @"http://173.255.243.60:4567/2949d770-1eac-0130-2698-7efdadfff33c/bucket.pkpass", @"pk_url", nil]];
-    [passes addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"I AM A TITLE", @"title", @"http://173.255.243.60:4567/0ba59d90-1eaa-0130-2693-7efdadfff33c/bucket.pkpass", @"pk_url", nil]];
-    [passes addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"I AM A TITLE", @"title", @"http://173.255.243.60:4567/0ba59d90-1eaa-0130-2693-7efdadfff33c/bucket.pkpass", @"pk_url", nil]];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"header.png"] forBarMetrics:UIBarMetricsDefault];
     
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"header-logo.png"]];
-    
-    
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 1;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self loadData];
+}
+
+
+-(void)loadData
+{
+    NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *defaultEmail = [currentDefaults objectForKey:@"email"];
+    MKNetworkOperation *op = [ApplicationDelegate.networkEngine operationWithPath:[NSString stringWithFormat:@"passes?email=%@",defaultEmail]];
+    [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
+        passes = [NSMutableArray array];
+        NSArray *array = [completedOperation responseJSON];
+        [passes addObjectsFromArray:array];
+        NSInteger numberUnpostedPasses = 0;
+        for (NSDictionary *dictonary in passes)
+        {
+            BOOL inPassbook = [currentDefaults boolForKey:[dictonary objectForKey:@"pk_url"]];
+            if (!inPassbook)
+            {
+                numberUnpostedPasses++;
+            }
+        }
+        [UIApplication sharedApplication].applicationIconBadgeNumber = numberUnpostedPasses;
+        [self.listsTableView reloadData];
+    } errorHandler:^(MKNetworkOperation *completedOperation, NSError *error) {
+        NSLog(@"we had an error");
+    }];
+    [ApplicationDelegate.networkEngine enqueueOperation:op];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,8 +86,6 @@
     NSDictionary *dictonary = [passes objectAtIndex:[indexPath row]];
     cell.titleLabel.text = [dictonary objectForKey:@"title"];
     NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
-    cell.addButton.tag = indexPath.row;
-    [cell.addButton addTarget:self action:@selector(addButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     BOOL inPassbook = [currentDefaults boolForKey:[dictonary objectForKey:@"pk_url"]];
     if (!inPassbook)
     {
@@ -71,6 +95,9 @@
     {
         cell.addButton.hidden = YES;
     }
+    cell.addButton.tag = indexPath.row;
+    [cell.addButton addTarget:self action:@selector(addButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
     return cell;
 }
 

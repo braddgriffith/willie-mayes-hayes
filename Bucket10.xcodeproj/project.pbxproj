@@ -157,6 +157,7 @@
 		E68D62CA166B7AD900B71025 /* PassKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E68D62C9166B7AD900B71025 /* PassKitHelper.m */; };
 		E68D62CF166B7C5F00B71025 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E68D62CC166B7C5F00B71025 /* SVProgressHUD.bundle */; };
 		E68D62D0166B7C5F00B71025 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E68D62CE166B7C5F00B71025 /* SVProgressHUD.m */; };
+		E68D62D3166B98EB00B71025 /* SplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E68D62D2166B98EB00B71025 /* SplashScreenViewController.m */; };
 		F8825168166B40130004DB24 /* Welcome2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F8825167166B40130004DB24 /* Welcome2ViewController.m */; };
 		F882516B166B41210004DB24 /* header-button.png in Resources */ = {isa = PBXBuildFile; fileRef = F882516A166B41210004DB24 /* header-button.png */; };
 		F882516E166B45770004DB24 /* btn_back_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = F882516C166B45770004DB24 /* btn_back_dark.png */; };
@@ -457,6 +458,8 @@
 		E68D62CC166B7C5F00B71025 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		E68D62CD166B7C5F00B71025 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		E68D62CE166B7C5F00B71025 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		E68D62D1166B98EA00B71025 /* SplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashScreenViewController.h; sourceTree = "<group>"; };
+		E68D62D2166B98EB00B71025 /* SplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashScreenViewController.m; sourceTree = "<group>"; };
 		F8825166166B40130004DB24 /* Welcome2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Welcome2ViewController.h; sourceTree = "<group>"; };
 		F8825167166B40130004DB24 /* Welcome2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Welcome2ViewController.m; sourceTree = "<group>"; };
 		F882516A166B41210004DB24 /* header-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header-button.png"; sourceTree = "<group>"; };
@@ -581,6 +584,8 @@
 				F8825171166B491C0004DB24 /* TableListingViewController.m */,
 				F882519B166B570C0004DB24 /* CustomTableCellCell.h */,
 				F882519C166B570C0004DB24 /* CustomTableCellCell.m */,
+				E68D62D1166B98EA00B71025 /* SplashScreenViewController.h */,
+				E68D62D2166B98EB00B71025 /* SplashScreenViewController.m */,
 				E62B7A53166AA92200F06819 /* Supporting Files */,
 			);
 			path = Bucket10;
@@ -1424,6 +1429,7 @@
 				F882519D166B570C0004DB24 /* CustomTableCellCell.m in Sources */,
 				E68D62CA166B7AD900B71025 /* PassKitHelper.m in Sources */,
 				E68D62D0166B7C5F00B71025 /* SVProgressHUD.m in Sources */,
+				E68D62D3166B98EB00B71025 /* SplashScreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

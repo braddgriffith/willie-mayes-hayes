@@ -7,11 +7,14 @@
 //
 
 #import "PassKitHelper.h"
+#import "SplashScreenViewController.h"
 
 @interface PassKitHelper ()
 {
     NSMutableData *fileData;
 	NSURLConnection *connectionInProgress;
+    SplashScreenViewController *splashVc;
+    NSString *passUrl;
 }
 
 @end
@@ -20,20 +23,26 @@
 
 -(void)openPassFile:(NSString*)urlStr
 {
-    NSURL *url = [NSURL URLWithString:urlStr];
-	NSURLRequest *request = [NSURLRequest requestWithURL:url
-											 cachePolicy:NSURLRequestReloadIgnoringCacheData
-										 timeoutInterval:30];
+    passUrl = urlStr;
+    UIStoryboard *storybord = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    splashVc =[storybord instantiateViewControllerWithIdentifier:@"SplashScreenViewController"];
+    [self.viewController presentViewController:splashVc animated:YES completion:^{
+        NSURL *url = [NSURL URLWithString:urlStr];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url
+                                                 cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                             timeoutInterval:30];
+        
+        //Clear any existing connection if there is one
+        if (connectionInProgress)
+        {
+            [connectionInProgress cancel];
+        }
+        
+        fileData = [[NSMutableData alloc] init];
+        
+        connectionInProgress = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    }];
     
-	//Clear any existing connection if there is one
-	if (connectionInProgress)
-	{
-		[connectionInProgress cancel];
-	}
-    
-	fileData = [[NSMutableData alloc] init];
-    
-	connectionInProgress = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -65,7 +74,7 @@
     [[PKAddPassesViewController alloc] initWithPass:newPass];
     
     addController.delegate = self;
-    [self.viewController presentViewController:addController
+    [splashVc presentViewController:addController
                        animated:YES
                      completion:nil];
     
@@ -74,6 +83,20 @@
     {
         connectionInProgress = nil;
     } 
+}
+
+-(void)addPassesViewControllerDidFinish:(PKAddPassesViewController *)controller
+{
+    NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
+    [currentDefaults setBool:YES forKey:passUrl];
+    [currentDefaults synchronize];
+    
+    [controller dismissViewControllerAnimated:YES completion:^{
+        [splashVc dismissViewControllerAnimated:NO completion:^{
+        }];
+    }];
+    
+    
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

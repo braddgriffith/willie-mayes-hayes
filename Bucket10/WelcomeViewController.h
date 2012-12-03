@@ -14,4 +14,5 @@
 @property (nonatomic, strong) IBOutlet UIImageView *backgroundImageView;
 @property (nonatomic, strong) IBOutlet UIImageView *logoImageView;
 
+-(void)drawBeeAnimation;
 @end
